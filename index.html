@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<head>
+   
+    <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>World Clock</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Cormorant+Garamond:ital,wght@1,500&family=Dancing+Script&display=swap"
+        rel="stylesheet">
+
+    <style>
+        h3 {
+            font-size: 50px;
+            color: #fff;
+
+            text-shadow: 0 0 5px rgb(103, 109, 184), 0 0 10px #fff, 0 0 15px #795db9, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+        }
+
+        body {
+            background-image: url(bg.jpeg);
+            background-size: cover;
+        }
+
+        .container {
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            width: 60%;
+        }
+
+        .main {
+            text-align: right;
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            font-family: 'Lobster', cursive;
+            color: rgb(155, 97, 212);
+            font-size: 10vh;
+        }
+
+        .jumbotron {
+            margin-top: 40px;
+            background-color: rgb(8, 8, 8);
+            color: rgb(147, 61, 168);
+            border-radius: 40px;
+
+        }
+
+        .scrollable-menu {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+
+        span {
+            font-size: 15vh;
+            font-family: 'Abel', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Dancing Script', cursive;
+
+        }
+
+        .day {
+            font-size: 30px;
+        }
+
+        #myzones {
+            border: 2px solid rgb(137, 74, 173);
+
+            background-color: black;
+            color: white;
+        }
+
+        @media screen and (max-width:768px) {
+            span {
+                font-size: 30px;
+            }
+
+            .time {
+                font-size: 20px;
+            }
+            .display-5
+            {
+                font-size:30px
+            }
+            .day{
+                font-size: 20px;  
+            }
+        }
+        @media screen and (min-width:768px) {
+            span {
+                font-size: 50px;
+            }
+
+            .time {
+                font-size: 30px;
+            }
+            .display-5
+            {
+                font-size:40px
+            }
+            .day{
+                font-size: 40px;  
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <h2 class='main'>WORLD CLOCK</h2>
+    </div>
+    <br>
+    <div class="row">
+        <div class='col-xs-3'>
+            <div class="container">
+                <div class="jumbotron">
+                    <h3 class="display-5" style="font-family: 'Abel', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
+            ">Current Time Is:</h3>
+                    <p class="lead time display-4"><span class='hours'></span>hrs : <span class='minutes'></span>min :
+                        <span class='seconds'></span>sec</p>
+                    <p class='day' style="font-family: 'Abel', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
+            "></p>
+                    <hr class="my-4">
+
+
+                    <select class="custom-select custom-select-sm" id='myzones'>
+                        <option style="color:#614b94">Select Your Time Zone</option>
+                        <option value="-12.00" class='kwajalein'>(GMT -12:00) Eniwetok, Kwajalein</option>
+                        <option value="-11.00">(GMT -11:00) Midway Island, Samoa</option>
+                        <option value="-10.00">(GMT -10:00) Hawaii</option>
+                        <option value="-09.50">(GMT -9:30) Taiohae</option>
+                        <option value="-09.00">(GMT -9:00) Alaska</option>
+                        <option value="-08.00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                        <option value="-07.00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                        <option value="-06.00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                        <option value="-05.00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                        <option value="-04.50">(GMT -4:30) Caracas</option>
+                        <option value="-04.00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                        <option value="-03.50">(GMT -3:30) Newfoundland</option>
+                        <option value="-03.00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                        <option value="-02.00">(GMT -2:00) Mid-Atlantic</option>
+                        <option value="-01.00">(GMT -1:00) Azores, Cape Verde Islands</option>
+                        <option value="+00.00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                        <option value="+01.00">(GMT +1:00) Brussels, Copenhagen, Madrid, Paris</option>
+                        <option value="+02.00">(GMT +2:00) Kaliningrad, South Africa</option>
+                        <option value="+03.00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                        <option value="+03.50">(GMT +3:30) Tehran</option>
+                        <option value="+04.00">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                        <option value="+04.50">(GMT +4:30) Kabul</option>
+                        <option value="+05.00">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                        <option value="+05.50">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                        <option value="+05.75">(GMT +5:45) Kathmandu, Pokhara</option>
+                        <option value="+06.00">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                        <option value="+06.50">(GMT +6:30) Yangon, Mandalay</option>
+                        <option value="+07.00">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                        <option value="+08.00">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                        <option value="+08.75">(GMT +8:45) Eucla</option>
+                        <option value="+09.00">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                        <option value="+09.50">(GMT +9:30) Adelaide, Darwin</option>
+                        <option value="+10.00">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                        <option value="+10.50">(GMT +10:30) Lord Howe Island</option>
+                        <option value="+11.00">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                        <option value="+11.50">(GMT +11:30) Norfolk Island</option>
+                        <option value="+12.00">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                        <option value="+12.75">(GMT +12:45) Chatham Islands</option>
+                        <option value="+13.00">(GMT +13:00) Apia, Nukualofa</option>
+                        <option value="+14.00">(GMT +14:00) Line Islands, Tokelau</option>
+                    </select>
+
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+
+
+
+    var k, lt, loc, utc, off, W;
+
+    var weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var sel = document.querySelector('#myzones');
+    var time = document.querySelector('.time');
+    var day = document.querySelector('.day');
+
+    var t = new Date();
+    k = 5.50;
+
+
+
+    sel.addEventListener('change', function () {
+
+        k = sel.value;
+        calcutime();
+
+
+    })
+
+
+    function calcutime() {
+        d = new Date();
+        lt = Number(d.getTime());
+        loc = Number(d.getTimezoneOffset()) * 60000;
+        utc = (lt + loc);
+        off = Number(k) * 3600000;
+        W = (utc + (off));
+        m = (new Date(W));
+        let H = m.getHours() < 10 ? '0' + m.getHours() : m.getHours();
+        let M = m.getMinutes() < 10 ? '0' + m.getMinutes() : m.getMinutes();
+        let S = m.getSeconds() < 10 ? '0' + m.getSeconds() : m.getSeconds();
+        let D = m.getDate() < 10 ? '0' + m.getDate() : m.getDate();
+        let Month = m.getMonth();
+        let y = m.getFullYear();
+        let r = m.getDay()
+
+        document.querySelector('.hours').textContent = H;
+        document.querySelector('.minutes').textContent = M;
+        document.querySelector('.seconds').textContent = S;
+        // time.textContent= H + 'hrs : ' + M + 'minutes : ' + S + 'seconds '+ '\n' ;
+        day.textContent = weeks[r] + ' , ' + D + ' ' + months[Month] + ' ' + y;
+    }
+    setInterval(calcutime, 1000);
+
+</script>
+
+</html>
